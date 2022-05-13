@@ -35,10 +35,20 @@ export default {
         password: password,
       });
       if (result.status == 201) {
-        console.log(result);
         localStorage.setItem("users-info", JSON.stringify(result.data));
+        this.$router.push({
+          name: "Home",
+        });
       }
     },
+  },
+  mounted() {
+    let user = localStorage.getItem("users-info");
+    if (user) {
+      this.$router.push({
+        name: "Home",
+      });
+    }
   },
 };
 </script>
